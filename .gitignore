@@ -1,0 +1,10 @@
+build
+.vscode
+*.exe
+*.o
+*.obj
+*.hex
+*.bin
+*.o
+*.out
+*.json
