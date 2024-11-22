@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+project(ModulusFeayure)
+include_directories((${PROJECT_SOURCE_DIR}/inc))
+file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.c")
+add_library(ModulusFunction STATIC ${SOURCES})
