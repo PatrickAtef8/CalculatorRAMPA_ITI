@@ -1,9 +1,27 @@
 cmake_minimum_required(VERSION 3.27)
 
-project(Divide C)
+project(Division C)
 
-set(C-SOURCE ./src/Divide.c)
+file(GLOB C-SOURCE "./src/*.c/")
 
-include_directories("./inc")
+set(SCRIPT_PATH ${CMAKE_CURRENT_BINARY_DIR}/../)
+
+if(NOT COMMAND ConfigFeature)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/../Scripts/GenerateConfig.cmake)
+endif()
 
 add_library(${PROJECT_NAME} STATIC ${C-SOURCE})
+
+target_include_directories(${PROJECT_NAME} PUBLIC inc/ ${SCRIPT_PATH})
+
+add_dependencies(${PROJECT_NAME} ConfigFeaturediv_Target)
+
+if(DEFINED DIV)
+    ConfigFeature(${PROJECT_NAME} ${DIV})
+endif()
+
+set_target_properties(
+    ${PROJECT_NAME}
+    PROPERTIES
+    OUTPUT_NAME div
+)
