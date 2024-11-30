@@ -20,7 +20,7 @@ add_library(${PROJECT_NAME} STATIC ${C-SOURCE})
 
 target_include_directories(${PROJECT_NAME} PUBLIC inc/ ${SCRIPT_PATH})
 
-add_dependencies(${PROJECT_NAME} ConfigFeaturesum_Target)
+add_dependencies(${PROJECT_NAME} ConfigFeaturesub_Target)
 
 if(DEFINED SUB)
     ConfigFeature(${PROJECT_NAME} ${SUB})
