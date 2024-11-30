@@ -1,12 +1,33 @@
-cmake_minimum_required(VERSION 3.29)
+#new edits 
 
-project(sum C)
+cmake_minimum_required(VERSION 3.27)
 
-# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
-# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR})
+project(Sum C)
+
+set(C-SOURCE ./src/sum.c)
+
+file(GLOB C-SOURCE "./src/*.c/")
 
 include_directories("./inc")
 
-#add_executable(${PROJECT_NAME} sum.c)
+set(SCRIPT_PATH ${CMAKE_CURRENT_BINARY_DIR}/../)
 
-add_library(${PROJECT_NAME} STATIC src/sum.c)
+if(NOT COMMAND ConfigFeature)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/../Scripts/GenerateConfig.cmake)
+endif()
+
+add_library(${PROJECT_NAME} STATIC ${C-SOURCE})
+
+target_include_directories(${PROJECT_NAME} PUBLIC inc/ ${SCRIPT_PATH})
+
+add_dependencies(${PROJECT_NAME} ConfigFeaturesum_Target)
+
+if(DEFINED SUM)
+    ConfigFeature(${PROJECT_NAME} ${SUM})
+endif()
+
+set_target_properties(
+    ${PROJECT_NAME}
+    PROPERTIES
+    OUTPUT_NAME sum
+)
