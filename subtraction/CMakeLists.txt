@@ -1,11 +1,33 @@
-cmake_minimum_required(VERSION 3.16)
-project(subtraction)
+#new edits 
 
-set(SOURCE_FILES src/subtraction.c)
-set(INCLUDE_DIR ${CMAKE_SOURCE_DIR}/INC)
+cmake_minimum_required(VERSION 3.27)
 
-add_library(${PROJECT_NAME} src/subtraction.c)
+project(subtraction C)
 
-target_include_directories(${PROJECT_NAME} PUBLIC inc)
-target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR})
-target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_BINARY_DIR})
+set(C-SOURCE ./src/subtraction.c)
+
+file(GLOB C-SOURCE "./src/*.c/")
+
+include_directories("./inc")
+
+set(SCRIPT_PATH ${CMAKE_CURRENT_BINARY_DIR}/../)
+
+if(NOT COMMAND ConfigFeature)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/../Scripts/GenerateConfig.cmake)
+endif()
+
+add_library(${PROJECT_NAME} STATIC ${C-SOURCE})
+
+target_include_directories(${PROJECT_NAME} PUBLIC inc/ ${SCRIPT_PATH})
+
+add_dependencies(${PROJECT_NAME} ConfigFeaturesum_Target)
+
+if(DEFINED SUB)
+    ConfigFeature(${PROJECT_NAME} ${SUB})
+endif()
+
+set_target_properties(
+    ${PROJECT_NAME}
+    PROPERTIES
+    OUTPUT_NAME sub
+)
