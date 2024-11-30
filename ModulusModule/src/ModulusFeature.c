@@ -1,7 +1,10 @@
-#include <stdint.h>
-#include<stdio.h>
-#include "ModulusFeature.h"
 
+
+#include "ModulusFeature.h"
+#include "Configuration.h"
+
+
+#ifdef MOD
 
 int32_t Modulus(int32_t x, int32_t y)
 { 
@@ -20,3 +23,5 @@ else
     return result;
 }
 }
+
+#endif /* MOD */
