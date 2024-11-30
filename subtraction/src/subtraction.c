@@ -1,4 +1,3 @@
-
 #include "subtraction.h"
 #ifdef SUB
 
