@@ -1,5 +1,5 @@
-#ifndef MODULUS_FEATURE_H
-#define MODULUS_FEATURE_H
+#ifndef MODULUS_FEATURE_H_
+#define MODULUS_FEATURE_H_
 
 #include <stdint.h>
 
