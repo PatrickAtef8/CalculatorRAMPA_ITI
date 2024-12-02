@@ -1,4 +1,5 @@
 #include "subtraction.h"
+#include "Configuration.h"
 #ifdef SUB
 
 

@@ -4,11 +4,7 @@ cmake_minimum_required(VERSION 3.27)
 
 project(subtraction C)
 
-set(C-SOURCE ./src/subtraction.c)
-
 file(GLOB C-SOURCE "./src/*.c/")
-
-include_directories("./inc")
 
 set(SCRIPT_PATH ${CMAKE_CURRENT_BINARY_DIR}/../)
 
