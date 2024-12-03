@@ -3,6 +3,7 @@
 #include "ModulusFeature.h"
 #include "Configuration.h"
 
+#include<stdio.h>
 
 #ifdef MOD
 
